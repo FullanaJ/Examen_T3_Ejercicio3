@@ -1,30 +1,35 @@
 package api.service;
 
-import api.model.Client;
+import api.Numeros;
 //import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 //import respository.ClientRepository;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class ClientServiceImpl implements ClientService {
 
-/*
-    private final ClientRepository clientRepository;
-    @Autowired
-    public ClientServiceImpl(ClientRepository clientRepository) {
-        this.clientRepository = clientRepository;
-    }
-*/
+    /**
+     * Este método devuelve una lista de 100 números aleatorios.
+     * @return
+     */
     @Override
-    public List<Client> getAllClients() {
-        return List.of(
-                new Client(1L,"Amazon","mail@123.com","+54 311 111","Av. Sueter","England","Manchester","1234"),
-                new Client(2L,"Mercado Libre","aaa@aaa.com","+54 311 222","Av. Sueter","Argentina","Rosario","1234"),
-                new Client(3L,"Alibaba","aaa@bbb.com","+54 311 333","Av. Sueter","China","Beijing","1234"),
-                new Client(4L,"Ebay","bbb@ccc.com","+54 311 444","Av. Sueter","USA","New York","1234"),
-                new Client(5L,"Aliexpress","ccc@ddd.com","+54 311 555","Av. Sueter","China","Shanghai","1234"),
-                new Client(6L,"Wish","ddd@eee.com","+54 311 666","Av. Sueter","USA","Los Angeles","1234")
-        );
+    public List<Integer> getAllNumbers() {
+        ArrayList <Integer> numeros = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            numeros.add(Numeros.generaNumeroRandom());
+        }
+        return numeros;
+    }
+
+    /**
+     * Este método recibe un número y devuelve un número aleatorio del mismo tamaño de digitos que el valor de este.
+     * @param d
+     * @return
+     */
+    @Override
+    public String getNumberSize(int d) {
+        return Numeros.numeroXDigito(d);
     }
 }

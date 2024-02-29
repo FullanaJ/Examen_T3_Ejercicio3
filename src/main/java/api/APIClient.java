@@ -26,11 +26,12 @@ public class APIClient {
             return builder.build();
         }
 
+
         @Bean
         public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
             return args -> {
                 RestTemplate quote = restTemplate.getForObject(
-                        "http://localhost:8080/clients", RestTemplate.class);
+                        "http://localhost:8080/random", RestTemplate.class);
                 log.info(quote.toString());
             };
         }
